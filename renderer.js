@@ -92,11 +92,16 @@ authBtn.addEventListener('click', async () => {
 
 // New note
 newNoteBtn.addEventListener('click', () => {
-  if (markdownEditor.value && !confirm('Create a new note? Unsaved changes will be lost.')) {
-    return;
+  if (markdownEditor.value.trim()) {
+    // Still use confirm for now - a full modal would require more extensive changes
+    const confirmed = confirm('Create a new note? Unsaved changes will be lost.');
+    if (!confirmed) {
+      return;
+    }
   }
   markdownEditor.value = '';
   updatePreview();
+  showNotification('New note created', 'info');
 });
 
 // Save note
