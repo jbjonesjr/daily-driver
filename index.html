@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
+  <title>Daily Driver</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Daily Driver</h1>
+      <p class="subtitle">Daily notes and activity tool</p>
+      <div class="auth-section">
+        <button id="auth-btn" class="btn btn-primary">Connect GitHub</button>
+        <span id="auth-status" class="auth-status"></span>
+      </div>
+    </header>
+
+    <main>
+      <div class="editor-container">
+        <div class="toolbar">
+          <button id="new-note" class="btn btn-secondary" title="New Note">New</button>
+          <button id="save-note" class="btn btn-secondary" title="Save Note">Save</button>
+          <button id="load-note" class="btn btn-secondary" title="Load Note">Load</button>
+          <div class="separator"></div>
+          <button id="toggle-preview" class="btn btn-secondary active" title="Toggle Preview">Preview</button>
+        </div>
+
+        <div class="editor-layout">
+          <div class="editor-pane">
+            <h3>Editor</h3>
+            <textarea id="markdown-editor" placeholder="Write your markdown here...
+
+# Welcome to Daily Driver
+
+This is a simple Electron app for taking daily notes with markdown support.
+
+## Features
+- **Markdown editing** with live preview
+- **GitHub authentication** (coming soon)
+- **REST API integration** (coming soon)
+- **Cross-platform** support
+
+Start typing to see the preview!"></textarea>
+          </div>
+
+          <div class="preview-pane" id="preview-pane">
+            <h3>Preview</h3>
+            <div id="markdown-preview" class="markdown-content"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>Running on <span id="platform"></span></p>
+    </footer>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

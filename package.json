@@ -1,0 +1,87 @@
+{
+  "name": "daily-driver",
+  "productName": "Daily Driver",
+  "version": "1.0.0",
+  "description": "Daily notes and activity tool",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "NODE_ENV=development electron .",
+    "build": "electron-builder",
+    "build:mac": "electron-builder --mac",
+    "build:mac-arm": "electron-builder --mac --arm64",
+    "build:mac-universal": "electron-builder --mac --universal",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "electron",
+    "notes",
+    "markdown",
+    "daily",
+    "productivity"
+  ],
+  "author": "jbjonesjr",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jbjonesjr/daily-driver"
+  },
+  "build": {
+    "appId": "com.jbjonesjr.daily-driver",
+    "productName": "Daily Driver",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64", "universal"]
+        },
+        {
+          "target": "zip",
+          "arch": ["x64", "arm64", "universal"]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "files": [
+      "**/*",
+      "!**/*.ts",
+      "!*.map",
+      "!*.md",
+      "!**/*.md",
+      "!.github",
+      "!README.md",
+      "!LICENSE"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist"
+    }
+  },
+  "devDependencies": {
+    "electron": "^39.2.7",
+    "electron-builder": "^25.1.8"
+  },
+  "dependencies": {
+    "dompurify": "^3.2.4",
+    "marked": "^15.0.6"
+  }
+}
