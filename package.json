@@ -34,11 +34,19 @@
       "target": [
         {
           "target": "dmg",
-          "arch": ["x64", "arm64", "universal"]
+          "arch": [
+            "x64",
+            "arm64",
+            "universal"
+          ]
         },
         {
           "target": "zip",
-          "arch": ["x64", "arm64", "universal"]
+          "arch": [
+            "x64",
+            "arm64",
+            "universal"
+          ]
         }
       ],
       "icon": "assets/icon.png",
@@ -65,10 +73,9 @@
       "**/*",
       "!**/*.ts",
       "!*.map",
-      "!*.md",
-      "!**/*.md",
-      "!.github",
       "!README.md",
+      "!ARCHITECTURE.md",
+      "!.github",
       "!LICENSE"
     ],
     "directories": {
@@ -82,6 +89,7 @@
   },
   "dependencies": {
     "dompurify": "^3.2.4",
+    "jsdom": "^25.0.1",
     "marked": "^15.0.6"
   }
 }

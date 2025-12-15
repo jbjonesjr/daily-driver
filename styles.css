@@ -322,3 +322,46 @@ footer {
 ::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
 }
+
+/* Notification system */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-weight: 500;
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateX(400px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  max-width: 350px;
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.notification-success {
+  border-left: 4px solid #4ade80;
+  color: #166534;
+}
+
+.notification-error {
+  border-left: 4px solid #f87171;
+  color: #991b1b;
+}
+
+.notification-warning {
+  border-left: 4px solid #fbbf24;
+  color: #92400e;
+}
+
+.notification-info {
+  border-left: 4px solid #667eea;
+  color: #1e3a8a;
+}

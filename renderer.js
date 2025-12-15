@@ -1,13 +1,3 @@
-// Import marked for markdown parsing
-const { marked } = require('marked');
-const DOMPurify = require('dompurify');
-
-// Configure marked options
-marked.setOptions({
-  breaks: true,
-  gfm: true
-});
-
 // DOM elements
 const markdownEditor = document.getElementById('markdown-editor');
 const markdownPreview = document.getElementById('markdown-preview');
@@ -34,11 +24,27 @@ document.addEventListener('DOMContentLoaded', () => {
   updatePreview();
 });
 
+// Simple notification system
+function showNotification(message, type = 'info') {
+  const notification = document.createElement('div');
+  notification.className = `notification notification-${type}`;
+  notification.textContent = message;
+  document.body.appendChild(notification);
+  
+  // Trigger animation
+  setTimeout(() => notification.classList.add('show'), 10);
+  
+  // Remove after 3 seconds
+  setTimeout(() => {
+    notification.classList.remove('show');
+    setTimeout(() => notification.remove(), 300);
+  }, 3000);
+}
+
 // Markdown preview update
 function updatePreview() {
   const markdown = markdownEditor.value;
-  const rawHtml = marked.parse(markdown);
-  const cleanHtml = DOMPurify.sanitize(rawHtml);
+  const cleanHtml = window.electronAPI.renderMarkdown(markdown);
   markdownPreview.innerHTML = cleanHtml;
 }
 
@@ -98,7 +104,7 @@ saveNoteBtn.addEventListener('click', async () => {
   const content = markdownEditor.value;
   
   if (!content.trim()) {
-    alert('Nothing to save!');
+    showNotification('Nothing to save!', 'warning');
     return;
   }
 
@@ -106,13 +112,13 @@ saveNoteBtn.addEventListener('click', async () => {
     const result = await window.electronAPI.saveMarkdown(content, null);
     
     if (result.success) {
-      alert('Note saved successfully!');
+      showNotification('Note saved successfully!', 'success');
     } else {
-      alert('Failed to save: ' + result.message);
+      showNotification('Failed to save: ' + result.message, 'error');
     }
   } catch (error) {
     console.error('Save error:', error);
-    alert('Failed to save note');
+    showNotification('Failed to save note', 'error');
   }
 });
 
@@ -124,13 +130,13 @@ loadNoteBtn.addEventListener('click', async () => {
     if (result.success) {
       markdownEditor.value = result.content;
       updatePreview();
-      alert('Note loaded successfully!');
+      showNotification('Note loaded successfully!', 'success');
     } else {
-      alert('Failed to load: ' + result.message);
+      showNotification('Failed to load: ' + result.message, 'error');
     }
   } catch (error) {
     console.error('Load error:', error);
-    alert('Failed to load note');
+    showNotification('Failed to load note', 'error');
   }
 });
 
