@@ -12,6 +12,10 @@ jobs:
     name: Build on macOS
     runs-on: macos-latest
     
+    permissions:
+      contents: read
+      actions: read
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -42,6 +46,9 @@ jobs:
   lint:
     name: Lint and Check
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
     
     steps:
       - name: Checkout code
