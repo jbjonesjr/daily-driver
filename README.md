@@ -12,15 +12,40 @@ Daily notes and activity tool built with Electron for macOS.
 - 🔐 **GitHub Auth Ready** - Prepared for GitHub OAuth integration
 - 💾 **File Operations** - Save and load markdown files (coming soon)
 
-## Getting Started
+## Installation on Mac
 
-### Prerequisites
+### Option 1: Install Pre-Built App (Recommended for End Users)
+
+1. **Download the DMG file**:
+   - Go to the [GitHub Actions page](https://github.com/jbjonesjr/daily-driver/actions)
+   - Click on the latest successful workflow run
+   - Scroll down to "Artifacts" section
+   - Download `daily-driver-macos`
+   - Extract the ZIP file to find the DMG
+
+2. **Install the app**:
+   - Double-click the `Daily Driver-1.0.0.dmg` file
+   - Drag the Daily Driver app to your Applications folder
+   - Eject the DMG
+
+3. **Run the app**:
+   - Open Finder and go to Applications
+   - Double-click "Daily Driver"
+   - If macOS shows a security warning, go to System Settings > Privacy & Security and click "Open Anyway"
+
+4. **System Requirements**:
+   - macOS 10.13 (High Sierra) or later
+   - Works on both Intel (x64) and Apple Silicon (ARM64) Macs
+
+### Option 2: Run from Source (For Developers)
+
+#### Prerequisites
 
 - Node.js 20.x or later
 - npm 10.x or later
 - macOS (primary target platform)
 
-### Installation
+#### Installation Steps
 
 1. Clone the repository:
 ```bash
