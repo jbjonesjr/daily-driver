@@ -137,3 +137,20 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Electron specific
+dist/
+*.dmg
+*.zip
+*.exe
+*.AppImage
+*.deb
+*.rpm
+*.snap
+
+# macOS specific
+.DS_Store
+*.app
+
+# Build artifacts
+build/Release
